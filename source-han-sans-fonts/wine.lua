@@ -1,18 +1,10 @@
 pkgname   = 'source-han-sans-fonts'
-pkgver    = '2021'
+pkgver    = '2.0.4'
 pkgrel    = 1
 pkgdesc   = 'Source Han Sans fonts'
-publisher = 'Adobe'
+url       = 'https://github.com/adobe-fonts/source-han-sans'
 
-arch      = {'win32','win64'}
-url       = 'https://www.win-rar.com/fileadmin/winrar-versions'
-icon      = 'https://'
-
-groups    = {'fonts'}
 requires  = {'unzip'}
-
-setup     = 'SourceHanSans.ttc.zip'
-
 source    = {"https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSans.ttc.zip",
              "win9x-fonts.reg",
              "win-fonts.reg"
