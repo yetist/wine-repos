@@ -7,6 +7,8 @@ publisher = "Kingsoft"
 url = "https://www.51dzt.com/rubik-ssr/51dzt"
 
 depends = { "fakechinese" }
+-- quartz
+-- riched20
 source = {
 	"https://package.op.wpscdn.cn/wps/download/typeeasy.22063.12012.0.exe",
 	"https://wdl1.cache.wps.cn/dzt/game/dzt_great_race.exe",
