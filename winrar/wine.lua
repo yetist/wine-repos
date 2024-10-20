@@ -1,30 +1,26 @@
-pkgname   = 'winrar'
-pkgver    = '611'
-pkgrel    = 1
-pkgdesc   = "WinRAR 6.11"
-arch      = {'win32','win64'}
-url       = "https://www.win-rar.com/fileadmin/winrar-versions"
-icon      = "https://"
-license   = {'custom'}
-groups    = {'apps'}
-depends   = {
-  'd3dx9',
-  'fakechinese',
-}
-requires  = {'7z'}
+pkgname = "winrar"
+pkgver = "611"
+pkgrel = 1
+pkgdesc = "WinRAR 6.11"
+arch = { "win32", "win64" }
+url = "https://www.win-rar.com/fileadmin/winrar-versions"
+icon = "https://"
+license = { "custom" }
+groups = { "apps" }
+depends = { "d3dx9", "fakechinese" }
+requires = { "7z" }
 publisher = "RARLAB"
-year      = "1993"
-file1     = "winrar-x32-611.exe"
-overdlls  = {'abc.dll'}
+year = "1993"
+file1 = "winrar-x32-611.exe"
+overdlls = { "abc.dll" }
 -- exe       = wine.var.program_files .. "/WinRAR/WinRAR.exe"
 
-if (wb.var.arch == "win32")
-then
-    source = { url .. "/winrar-x32-611.exe", "winrar.png"}
-    checksums = {"aaa"}
+if wb.var.arch == "win32" then
+	source = { url .. "/winrar-x32-611.exe", "winrar.png" }
+	checksums = { "aaa" }
 else
-    source = { url .. "/winrar-x64-611.exe", "winrar.png"}
-    checksums = {"aaa"}
+	source = { url .. "/winrar-x64-611.exe", "winrar.png" }
+	checksums = { "aaa" }
 end
 
 print(wb.pwd())
@@ -72,4 +68,5 @@ tar -C ${pkgdir} -xf data.tar.xz
 sed -i 's/qq %U/qq --no-sandbox %U/'  ${pkgdir}/usr/share/applications/qq.desktop
 install -Dm755 ${srcdir}/linuxqq.sh ${pkgdir}/usr/bin/linuxqq
 }
-]]--
+]]
+--
