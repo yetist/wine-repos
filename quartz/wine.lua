@@ -1,34 +1,48 @@
-pkgname   = 'typeeasy'
+pkgname   = 'quartz'
 pkgver    = '2016'
 pkgrel    = 1
-pkgdesc   = 'TypeEasy(金山打字通)'
-publisher = 'Kingsoft'
+pkgdesc   = 'quartz.dll'
+publisher = 'Microsoft'
 
 url = 'https://www.51dzt.com/rubik-ssr/51dzt'
 
-depends = {'fakechinese'}
--- quartz
--- riched20
-source = {'https://package.op.wpscdn.cn/wps/download/typeeasy.22063.12012.0.exe'}
+depends = {'win7sp1'}
+source = {'override.reg'}
 
 -- install pkg into wine prefix
 function install()
-  wb.wine(wb.basename(source[1]))
+    print('install quartz')
+    print('wine_arch=' .. wb.var.arch)
+
+--  os.execute('cabextract -L -F i386/riched20.dl_ '.. wb.var.cache_dir ..'/W2KSP4_EN.EXE')
+--  os.execute('cabextract --directory='.. wb.var.system32_dlls ..' i386/riched20.dl_')
+  wb.wine("regedit override.reg")
+
+---[[
+    w_try_cabextract -d "${W_TMP}" -L -F "${filename}" "${W_CACHE}"/win7sp1/windows6.1-KB976932-X86.exe
+
+    helper_win7sp1 x86_microsoft-windows-directshow-core_31bf3856ad364e35_6.1.7601.17514_none_a877a1cc4c284497/quartz.dll
+    w_try_cp_dll "${W_TMP}/x86_microsoft-windows-directshow-core_31bf3856ad364e35_6.1.7601.17514_none_a877a1cc4c284497/quartz.dll" "${W_SYSTEM32_DLLS}/quartz.dll"
+    w_override_dlls native,builtin quartz
+    w_try_regsvr quartz.dll
+
+    if [ "${W_ARCH}" = "win64" ]; then
+        helper_win7sp1_x64 amd64_microsoft-windows-directshow-core_31bf3856ad364e35_6.1.7601.17514_none_04963d500485b5cd/quartz.dll
+        w_try_cp_dll "${W_TMP}/amd64_microsoft-windows-directshow-core_31bf3856ad364e35_6.1.7601.17514_none_04963d500485b5cd/quartz.dll" "${W_SYSTEM64_DLLS}/quartz.dll"
+        w_try_regsvr64 quartz.dll
+    fi
+]]---
+
 end
 
 -- is this pkg installed?
 function check()
-  return (wb.wine("reg QUERY \"HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\酷狗音乐\" /v DisplayIcon"))
-end
-
--- run app
-function run()
-  print('hello typeeasy')
---  _, path = wb.wine("reg QUERY \"HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\酷狗音乐\" /v DisplayIcon")
---  _, path = wb.split(wb.strip(path), "\r\n", 2)
---  path = wb.replace(wb.strip(path), "    ", " ")
---  _, _, path = wb.split(path, " ", 3)
---  wb.wine(path)
--- 83067 "DisplayIcon"="C:\\Program Files (x86)\\KuGou\\KGMusic\\KuGou.exe"
---  w_declare_exe "$W_PROGRAMS_X86_WIN\\KuGou\KGMusic" "KuGou.exe"
+  ret, text = wb.wine("reg QUERY \"HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides\" /v msls31")
+  if ret ~= 0 then
+    return false
+  end
+  if (string.find(wb.strip(text), "native,builtin") ~= nil) then
+    return true
+  end
+  return false
 end
