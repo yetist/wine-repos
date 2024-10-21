@@ -26,12 +26,7 @@ end
 function run()
   print("run kogou")
   os.execute("pwd")
-  print(wb.var.program_files_x86)
-  --   _, path = wb.wine("reg QUERY \"HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\酷狗音乐\" /v DisplayIcon")
-  --   _, path = wb.split(wb.strip(path), "\r\n", 2)
-  --   path = wb.replace(wb.strip(path), "    ", " ")
-  --   _, _, path = wb.split(path, " ", 3)
-  --   wb.wine(path)
-  -- 83067 "DisplayIcon"="C:\\Program Files (x86)\\KuGou\\KGMusic\\KuGou.exe"
-  --  w_declare_exe "$W_PROGRAMS_X86_WIN\\KuGou\KGMusic" "KuGou.exe"
+  print(wb.var.program_files_x86 .. '/KuGou/KGMusic')
+  wb.chdir(wb.var.program_files_x86 .. '/KuGou/KGMusic')
+  wb.wine('KuGou.exe')
 end
