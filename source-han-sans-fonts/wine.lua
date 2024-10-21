@@ -12,6 +12,8 @@ source    = {"https://github.com/adobe-fonts/source-han-sans/releases/download/2
 
 -- install pkg into wine prefix
 function install()
+  os.execute('pwd')
+  os.execute('ls')
     os.execute('unzip SourceHanSans.ttc.zip')
     os.rename('SourceHanSans.ttc', 'sourcehansans.ttc');
     os.execute('cp *.ttc '.. wb.var.fonts_dir)
