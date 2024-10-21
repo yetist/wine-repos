@@ -11,11 +11,11 @@ pkgdesc = "winxpsp3 runtimes"
 -- 2020/12/09: https://ftp.gnome.org/mirror/archive/ftp.sunet.se/pub/security/vendor/microsoft/winxp/Service_Packs/WindowsXP-KB936929-SP3-x86-ENU.exe
 
 source = {
-	"http://www.download.windowsupdate.com/msdownload/update/software/dflt/2008/04/windowsxp-kb936929-sp3-x86-enu_c81472f7eeea2eca421e116cd4c03e2300ebfde4.exe",
+	"WindowsXP-KB936929-SP3-x86-ENU.exe::http://www.download.windowsupdate.com/msdownload/update/software/dflt/2008/04/windowsxp-kb936929-sp3-x86-enu_c81472f7eeea2eca421e116cd4c03e2300ebfde4.exe",
 }
 
 function install()
-	os.rename(wb.basename(source[1], "WindowsXP-KB936929-SP3-x86-ENU.exe"))
+    return nil
 end
 
 function check()
