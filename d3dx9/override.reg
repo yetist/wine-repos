@@ -1,0 +1,9 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Wine\DllOverrides]
+"d3dx9_24"="native"
+"d3dx9_25"="native"
+"d3dx9_26"="native"
+"d3dx9_27"="native"
+"d3dx9_28"="native"
+"d3dx9_29"="native"
