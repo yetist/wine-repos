@@ -1,0 +1,4 @@
+
+HKEY_LOCAL_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\PPStream
+    SetupPath    REG_SZ    C:\Program Files\IQIYI Video\LStyle\12.8.5.8638
+
