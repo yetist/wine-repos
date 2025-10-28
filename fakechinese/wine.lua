@@ -9,13 +9,11 @@ source = { "replace.reg" }
 
 -- install pkg into wine prefix
 function install()
-	print("install (" .. pkgname .. ")")
 	wb.wine("regedit replace.reg")
 end
 
 -- is this pkg installed?
 function check()
-	print("check(" .. pkgname .. ")")
 	local ret, text = wb.wine(
 		'reg QUERY "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\FontLink\\SystemLink" /v Arial'
 	)

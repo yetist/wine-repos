@@ -32,8 +32,6 @@ end
 
 -- run app
 function run()
-	print("run kogou")
-	os.execute("pwd")
 	_, path = wb.wine(
 		'reg QUERY "HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\酷狗音乐" /v DisplayIcon'
 	)
