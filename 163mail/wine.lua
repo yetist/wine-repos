@@ -10,28 +10,37 @@ depends = { "fakechinese", "vcrun2005" }
 
 source = { "http://client.dl.126.net/pcmail/dashi/mail.exe" }
 
--- file1="mail.exe"
--- installed_exe1="$W_PROGRAMS_X86_WIN/MailMaster/Start.exe"
-
 -- install pkg into wine prefix
 function install()
-	print("install(" .. pkgname .. ")")
 	wb.wine(wb.basename(source[1]))
 end
 
 -- is this pkg installed?
 function check()
-	print("check(" .. pkgname .. ")")
-	--	ret = wb.wine(
-	--		'reg QUERY "HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\" /v DisplayIcon'
-	--	)
-	--return (ret == 0)
+	local ret, out = wb.wine(
+		'reg QUERY "HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\MailMaster" /v DisplayIcon'
+	)
+	if ret ~= 0 then
+		return false
+	end
+
+	if string.find(wb.strip(out), "DisplayIcon") ~= nil then
+		return true
+	end
 	return false
 end
 
 -- run app
 function run()
-	print("run(" .. pkgname .. ")")
-	os.execute("pwd")
-	-- w_declare_exe "$W_PROGRAMS_X86_WIN\\MailMaster" "Start.exe"
+	local _, path = wb.wine(
+		'reg QUERY "HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\MailMaster" /v InstallLocation'
+	)
+	_, path = wb.split(wb.strip(path), "\r\n", 2)
+	path = wb.replace(wb.strip(path), "    ", " ")
+	_, _, path = wb.split(path, " ", 3)
+	path = wb.replace(wb.strip(path), "\\", "\\\\")
+	path = wb.replace(wb.strip(path), " ", "\\ ")
+	path = wb.replace(wb.strip(path), "(", "\\(")
+	path = wb.replace(wb.strip(path), ")", "\\)")
+	wb.wine(path .. "\\\\mailmaster.exe")
 end
