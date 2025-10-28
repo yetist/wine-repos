@@ -6,7 +6,7 @@ publisher = "NetEase"
 
 url = "http://mail.163.com/dashi/?from=mail46"
 
-depends = { "vcrun2005", "fakechinese" }
+depends = { "fakechinese", "vcrun2005" }
 
 source = { "http://client.dl.126.net/pcmail/dashi/mail.exe" }
 
