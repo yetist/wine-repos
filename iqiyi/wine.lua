@@ -16,14 +16,21 @@ end
 
 -- is this pkg installed?
 function check()
-  return (wb.wine("reg QUERY \"HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\PPStream\" /v SetupPath"))
+  local name = wb.regvalue(
+    "HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\PPStream",
+    "SetupPath",
+  )
+  if name ~= "" then
+    return true
+  end
+  return false
 end
 
 -- run app
 function run()
-  _, path = wb.wine("reg QUERY \"HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\PPStream\" /v SetupPath")
-  _, path = wb.split(wb.strip(path), "\r\n", 2)
-  path = wb.replace(wb.strip(path), "    ", " ")
-  _, _, path = wb.split(path, " ", 3)
-  wb.wine("\"" .. path .. "\\QyClient.exe\"")
+  local path = wb.regvalue(
+    "HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\PPStream",
+    "SetupPath"
+  )
+  wb.exec("wine", path .. "\\QyClient.exe")
 end

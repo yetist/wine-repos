@@ -14,14 +14,12 @@ end
 
 -- is this pkg installed?
 function check()
-	local ret, text = wb.wine(
-		'reg QUERY "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\FontLink\\SystemLink" /v Arial'
-	)
-	if ret ~= 0 then
-		return false
-	end
-	if string.find(wb.strip(text), "sourcehansans.ttc") ~= nil then
-		return true
-	end
-	return false
+  local val = wb.regvalue(
+    "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\FontLink\\SystemLink",
+    "Arial",
+  )
+  if val == "sourcehansans.ttc" then
+    return true
+  end
+  return false
 end

@@ -17,14 +17,11 @@ end
 
 -- is this pkg installed?
 function check()
-	local ret, out = wb.wine(
-		'reg QUERY "HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\MailMaster" /v DisplayIcon'
+	local name = wb.regvalue(
+		"HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\MailMaster",
+		"DisplayIcon"
 	)
-	if ret ~= 0 then
-		return false
-	end
-
-	if string.find(wb.strip(out), "DisplayIcon") ~= nil then
+	if name ~= "" then
 		return true
 	end
 	return false
@@ -32,15 +29,9 @@ end
 
 -- run app
 function run()
-	local _, path = wb.wine(
-		'reg QUERY "HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\MailMaster" /v InstallLocation'
+	local path = wb.regvalue(
+		"HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\MailMaster",
+		"InstallLocation"
 	)
-	_, path = wb.split(wb.strip(path), "\r\n", 2)
-	path = wb.replace(wb.strip(path), "    ", " ")
-	_, _, path = wb.split(path, " ", 3)
-	path = wb.replace(wb.strip(path), "\\", "\\\\")
-	path = wb.replace(wb.strip(path), " ", "\\ ")
-	path = wb.replace(wb.strip(path), "(", "\\(")
-	path = wb.replace(wb.strip(path), ")", "\\)")
-	wb.wine(path .. "\\\\mailmaster.exe")
+	wb.exec("wine", path .. "\\mailmaster.exe")
 end

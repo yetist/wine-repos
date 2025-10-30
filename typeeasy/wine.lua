@@ -28,25 +28,16 @@ end
 
 -- is this pkg installed?
 function check()
-	local ret, out =
-		wb.wine('reg QUERY "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\TypeEasy" /v DisplayName')
-	if ret ~= 0 then
+	local name = wb.regvalue("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\TypeEasy", "DisplayName")
+	if name ~= "" then
+		return true
+	else
 		return false
 	end
-
-	if string.find(wb.strip(out), "DisplayName") ~= nil then
-		return true
-	end
-	return false
 end
 
 -- run app
 function run()
-	local _, path =
-		wb.wine('reg QUERY "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\TypeEasy" /v InstallPath')
-	_, path = wb.split(wb.strip(path), "\r\n", 2)
-	path = wb.replace(wb.strip(path), "    ", " ")
-	_, _, path = wb.split(path, " ", 3)
-	path = wb.replace(wb.strip(path), "\\", "\\\\")
-	wb.wine(path .. "\\\\TypeEasy.exe")
+	local path = wb.regvalue("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\TypeEasy", "InstallPath")
+	wb.exec("wine", path .. "\\TypeEasy.exe")
 end
