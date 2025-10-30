@@ -18,8 +18,8 @@ end
 
 -- is this pkg installed?
 function check()
-	local name = wb.regvalue("HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides", "msls31")
-	if name == "native,builtin" then
+	local _, value = wb.regvalue("HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides", "msls31")
+	if value == "native,builtin" then
 		return true
 	end
 	return false

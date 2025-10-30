@@ -15,7 +15,7 @@ source = {
 }
 
 function install()
-    return nil
+	return nil
 end
 
 function check()

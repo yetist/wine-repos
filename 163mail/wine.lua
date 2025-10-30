@@ -17,19 +17,15 @@ end
 
 -- is this pkg installed?
 function check()
-	local name = wb.regvalue(
+	return wb.regvalue(
 		"HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\MailMaster",
 		"DisplayIcon"
 	)
-	if name ~= "" then
-		return true
-	end
-	return false
 end
 
 -- run app
 function run()
-	local path = wb.regvalue(
+	local _, path = wb.regvalue(
 		"HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\MailMaster",
 		"InstallLocation"
 	)

@@ -19,7 +19,7 @@ function install()
 end
 
 function check()
-	local value = wb.regvalue("HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides", "d3dx9_24")
+	local _, value = wb.regvalue("HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides", "d3dx9_24")
 	if value == "native" then
 		return true
 	end

@@ -28,16 +28,12 @@ end
 
 -- is this pkg installed?
 function check()
-	local name = wb.regvalue("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\TypeEasy", "DisplayName")
-	if name ~= "" then
-		return true
-	else
-		return false
-	end
+	return wb.regvalue("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\TypeEasy", "DisplayName2")
 end
 
 -- run app
 function run()
-	local path = wb.regvalue("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\TypeEasy", "InstallPath")
+	local _, path =
+		wb.regvalue("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\TypeEasy", "InstallPath")
 	wb.exec("wine", path .. "\\TypeEasy.exe")
 end

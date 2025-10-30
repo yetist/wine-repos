@@ -37,8 +37,8 @@ end
 
 -- is this pkg installed?
 function check()
-	local name = wb.regvalue("HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides", "quartz")
-	if name == "native,builtin" then
+	local _, value = wb.regvalue("HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides", "quartz")
+	if value == "native,builtin" then
 		return true
 	end
 	return false

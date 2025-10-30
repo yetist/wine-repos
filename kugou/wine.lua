@@ -16,22 +16,17 @@ end
 
 -- is this pkg installed?
 function check()
-	local name = wb.regvalue(
+	return wb.regvalue(
 		"HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\酷狗音乐",
 		"DisplayIcon"
 	)
-	if name ~= "" then
-		return true
-	else
-		return false
-	end
 end
 
 -- function get_reg_query_result() end
 
 -- run app
 function run()
-	local path = wb.regvalue(
+	local _, path = wb.regvalue(
 		"HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\酷狗音乐",
 		"DisplayIcon"
 	)
