@@ -10,8 +10,8 @@ depends = { "fakechinese", "d3dx9" }
 
 source = { "https://d1.music.126.net/dmusic/cloudmusicsetup2.9.9.199909.exe" }
 
-file1 = "cloudmusicsetup2.9.9.199909.exe"
-installed_exe1 = "$W_PROGRAMS_X86_WIN/Netease/CloudMusic/cloudmusic.exe"
+--file1 = "cloudmusicsetup2.9.9.199909.exe"
+--installed_exe1 = "$W_PROGRAMS_X86_WIN/Netease/CloudMusic/cloudmusic.exe"
 
 -- install pkg into wine prefix
 function install()
@@ -20,16 +20,21 @@ end
 
 -- is this pkg installed?
 function check()
-	--	ret = wb.wine(
-	--		'reg QUERY "HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\" /v DisplayIcon'
-	--	)
-	--return (ret == 0)
+	local name = wb.regvalue(
+    "HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\网易云音乐",
+    "DisplayIcon",
+	)
+	if name ~= "" then
+		return true
+	end
 	return false
 end
 
 -- run app
 function run()
-	print("run kogou")
-	os.execute("pwd")
-	-- w_declare_exe("$W_PROGRAMS_X86_WIN\\NeteaseCloudMusic")("cloudmusic.exe")
+	local path = wb.regvalue(
+		"HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\网易云音乐",
+		"DisplayIcon"
+	)
+	wb.exec("wine", path)
 end
