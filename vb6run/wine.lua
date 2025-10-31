@@ -3,7 +3,7 @@ pkgver = "2004"
 pkgrel = 1
 pkgdesc = "MS Visual Basic 6 runtime sp6"
 publisher = "Microsoft"
-
+url = "http://www.microsoft.com/"
 source = {
 	"https://github.com/KieuManh366377/Microsoft-Visual-Basic-6.0-Service-Pack-6/raw/refs/heads/main/VB6.0-KB290887-X86.exe",
 }
@@ -12,7 +12,6 @@ source = {
 function install()
 	wb.exec("wine", "VB6.0-KB290887-X86.exe", "/T:c:\\windows\\temp", "/c", "/q")
 	wb.exec("mv", wb.var.prefix .. "/drive_c/windows/temp/vbrun60sp6.exe", ".")
-
 	wb.exec("cabextract", "-L", "vbrun60sp6.exe")
 	wb.exec(
 		"mv",
