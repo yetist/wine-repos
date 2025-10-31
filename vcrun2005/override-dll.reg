@@ -1,8 +1,0 @@
-REGEDIT4
-
-[HKEY_CURRENT_USER\Software\Wine\DllOverrides]
-"atl80"="native,builtin"
-"msvcm80"="native,builtin"
-"msvcp80"="native,builtin"
-"msvcr80"="native,builtin"
-"vcomp"="native,builtin"
