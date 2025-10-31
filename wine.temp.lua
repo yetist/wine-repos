@@ -9,19 +9,26 @@ source = { "" }
 
 -- install pkg into wine prefix
 function install()
+	--[[
 	wb.wine(wb.basename(source[1]))
+  ]]
 end
 
 -- is this pkg installed?
 function check()
-	return wb.regvalue("HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Software", "DisplayIcon")
+	return false
+	--[[
+  return wb.regvalue("HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Software", "DisplayIcon")
+  ]]
 end
 
 -- run app
 function run()
-	local _, path =
-		wb.regvalue("HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Software", "DisplayIcon")
-	wb.exec("wine", path .. "\\software.exe")
+	--[[
+  local _, path =
+    wb.regvalue("HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Software", "DisplayIcon")
+  wb.exec("wine", path .. "\\software.exe")
+  ]]
 end
 --[[
     wb.var.prefix
@@ -44,9 +51,6 @@ end
     wb.chdir()
     wb.dirname()
     wb.basename()
-    -- wb.strip()
-    -- wb.split()
-    -- wb.replace()
     wb.exists()
     wb.isdir()
     wb.wine()

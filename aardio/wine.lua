@@ -4,6 +4,7 @@ pkgrel = 1
 pkgdesc = "桌面软件快速开发工具"
 publisher = "aardio"
 url = "https://www.aardio.com/"
+icon = "https://www.aardio.com/images/favicon32.ico"
 depends = { "fakechinese" }
 source = { "https://d.aardio.com/ide/aardio.7z" }
 
