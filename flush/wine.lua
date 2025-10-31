@@ -1,5 +1,5 @@
 pkgname = "flush"
-pkgver = "9.20.71"
+pkgver = "9.50.31"
 pkgrel = 1
 pkgdesc = "同花顺免费版 (A Chinese stock app)"
 publisher = "Zhejiang Hithink Flush Information Network Co."
@@ -7,11 +7,9 @@ publisher = "Zhejiang Hithink Flush Information Network Co."
 url = "http://www.10jqka.com.cn/"
 
 depends = { "fakechinese" }
-
-source = { "http://resource.thsi.cn/soft/THS_9.20.71_20231127.exe" }
-
---  file1="THS_9.20.71_20231127.exe"
---  installed_exe1="$W_PROGRAMS_X86_WIN/同花顺/hexin.exe"
+source = {
+	"https://sp.thsi.cn/staticS3/mobileweb-upload-static-server.file/app_6/downloadcenter/THS_freeldy_9.50.31_1021.exe",
+}
 
 -- install pkg into wine prefix
 function install()
@@ -20,16 +18,18 @@ end
 
 -- is this pkg installed?
 function check()
-	--	ret = wb.wine(
-	--		'reg QUERY "HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\" /v DisplayIcon'
-	--	)
-	--return (ret == 0)
-	return false
+	return wb.regvalue(
+		"HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\同花顺_is1",
+		"DisplayIcon"
+	)
 end
 
 -- run app
 function run()
-	print("run " .. pkgname)
-	os.execute("pwd")
-	-- w_declare_exe "$W_PROGRAMS_X86_WIN\\同花顺" "hexin.exe"
+	local _, path = wb.regvalue(
+		"HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\同花顺_is1",
+		"DisplayIcon",
+		"gb18030"
+	)
+	wb.exec("wine", path)
 end
