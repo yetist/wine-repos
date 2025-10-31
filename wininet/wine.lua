@@ -1,9 +1,10 @@
-pkgname = "quartz"
-pkgver = "2016"
+pkgname = "wininet"
+pkgver = "2011"
 pkgrel = 1
-pkgdesc = "quartz.dll"
-publisher = "Microsoft"
-url = "https://www.51dzt.com/rubik-ssr/51dzt"
+pkgdesc = "MS Windows Internet API"
+arch = { "win32", "win64" }
+requires = { "cabextract" }
+depends = { "iertutil" }
 
 if wb.var.arch == "win64" then
 	source = {
@@ -15,26 +16,23 @@ else
 	}
 end
 
--- install pkg into wine prefix
 function install()
 	if wb.var.arch == "win64" then
 		file =
-			"amd64_microsoft-windows-directshow-core_31bf3856ad364e35_6.1.7601.17514_none_04963d500485b5cd/quartz.dll"
+			"amd64_microsoft-windows-i..tocolimplementation_31bf3856ad364e35_8.0.7601.17514_none_7ac940242f7494a4/wininet.dll"
 		wb.exec("cabextract", "-L", "-F", file, "windows6.1-KB976932-X64.exe")
 		wb.exec("cp", file, wb.var.system64_dlls)
-		wb.wine(wb.var.system64_dlls .. "/regsvr32.exe quartz.dll")
 	else
-		file = "x86_microsoft-windows-directshow-core_31bf3856ad364e35_6.1.7601.17514_none_a877a1cc4c284497/quartz.dll"
+		file =
+			"x86_microsoft-windows-i..tocolimplementation_31bf3856ad364e35_8.0.7601.17514_none_1eaaa4a07717236e/wininet.dll"
 		wb.exec("cabextract", "-L", "-F", file, "windows6.1-KB976932-X86.exe")
 		wb.exec("cp", file, wb.var.system32_dlls)
-		wb.wine(wb.var.system32_dlls .. "/regsvr32.exe quartz.dll")
 	end
-	wb.override_dll("native,builtin", "quartz")
+	wb.override_dll("native,builtin", "wininet")
 end
 
--- is this pkg installed?
 function check()
-	local _, value = wb.regvalue("HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides", "quartz")
+	local _, value = wb.regvalue("HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides", "wininet")
 	if value == "native,builtin" then
 		return true
 	end

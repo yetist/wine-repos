@@ -28,7 +28,7 @@ end
 
 -- is this pkg installed?
 function check()
-	return wb.regvalue("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\TypeEasy", "DisplayName2")
+	return wb.regvalue("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\TypeEasy", "DisplayName")
 end
 
 -- run app

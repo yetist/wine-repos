@@ -20,16 +20,17 @@ end
 
 -- is this pkg installed?
 function check()
-	--	ret = wb.wine(
-	--		'reg QUERY "HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\" /v DisplayIcon'
-	--	)
-	--return (ret == 0)
-	return false
+	return wb.regvalue(
+		"HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{FAA0F386-730B-11E7-8B9C-005056951CAD}",
+		"InstallLocation"
+	)
 end
 
 -- run app
 function run()
-	print("run kogou")
-	os.execute("pwd")
-	-- w_declare_exe "$W_PROGRAMS_X86_WIN\\Evernote\Evernote" Evernote.exe
+	local _, path = wb.regvalue(
+		"HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{FAA0F386-730B-11E7-8B9C-005056951CAD}",
+		"InstallLocation"
+	)
+	wb.exec("wine", path .. "Evernote.exe")
 end
