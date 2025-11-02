@@ -9,7 +9,16 @@ source = { "replace.reg" }
 
 -- install pkg into wine prefix
 function install()
-	wb.wine("regedit replace.reg")
+	wb.regset("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\FontLink\\SystemLink", {
+		["Arial Black"] = "sourcehansans.ttc",
+		["Arial"] = "sourcehansans.ttc",
+		["Lucida Sans Unicode"] = "sourcehansans.ttc",
+		["MS Sans Serif"] = "sourcehansans.ttc",
+		["Microsoft Sans Serif"] = "sourcehansans.ttc",
+		["SimSun"] = "sourcehansans.ttc",
+		["Tahoma Bold"] = "sourcehansans.ttc",
+		["Tahoma"] = "sourcehansans.ttc",
+	})
 end
 
 -- is this pkg installed?

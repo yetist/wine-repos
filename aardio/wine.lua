@@ -13,11 +13,6 @@ function install()
 	wb.exec("mkdir", "-p", wb.var.program_files .. "/aardio")
 	wb.exec("7z", "x", "-o" .. wb.var.program_files .. "/aardio", "aardio.7z")
 
-	wb.exec("wrestool", "-x", "-t", "14", "-n", "128", "-o", "aardio.ico", wb.var.program_files .. "/aardio/aardio.exe")
-	os.execute("icotool -x -b 32 aardio.ico")
-	os.execute("cp *16x16*.png ~/.local/share/icons/hicolor/16x16/apps/aardio.png")
-	os.execute("cp *32x32*.png ~/.local/share/icons/hicolor/32x32/apps/aardio.png")
-	os.execute("cp *48x48*.png ~/.local/share/icons/hicolor/48x48/apps/aardio.png")
 	wb.desktop("aardio", "aardio", "Development;", wb.var.program_files .. "/aardio/aardio.exe")
 end
 
