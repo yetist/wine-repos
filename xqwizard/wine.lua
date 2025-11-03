@@ -4,7 +4,7 @@ pkgrel = 1
 pkgdesc = "象棋巫师"
 publisher = "xqbase"
 url = "https://www.xqbase.com/"
-depends = { "fakechinese", "vb6run" }
+depends = { "fakechinese", "vb6run", "oleaut32" }
 source = { "https://www.xqbase.com/download/xqwizard_setup.exe" }
 
 function install()
