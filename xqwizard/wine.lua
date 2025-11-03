@@ -4,11 +4,18 @@ pkgrel = 1
 pkgdesc = "象棋巫师"
 publisher = "xqbase"
 url = "https://www.xqbase.com/"
-depends = { "fakechinese", "vb6run" }
+depends = { "fakechinese", "vb6run", "oleaut32" }
 source = { "https://www.xqbase.com/download/xqwizard_setup.exe" }
 
 function install()
 	wb.wine(wb.basename(source[1]))
+
+	local _, path = wb.regvalue(
+		"HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\象棋巫师_is1",
+		"InstallLocation"
+	)
+	local exe = path .. "\\XQWIZARD.EXE"
+	wb.desktop("象棋巫师", "Game;KidsGame;", exe, 1)
 end
 
 function check()
