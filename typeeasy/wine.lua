@@ -9,7 +9,6 @@ url = "https://www.51dzt.com/rubik-ssr/51dzt"
 depends = { "fakechinese" }
 source = {
 	"https://package.op.wpscdn.cn/wps/download/typeeasy.22063.12012.0.exe",
-	"https://package.op.wpscdn.cn/wps/download/typeeasy.22063.12012.0.exe",
 	"https://wdl1.cache.wps.cn/dzt/game/dzt_great_race.exe",
 	"https://wdl1.cache.wps.cn/dzt/game/dzt_rat.exe",
 	"https://wdl1.cache.wps.cn/dzt/game/dzt_apple.exe",
@@ -30,7 +29,7 @@ function install()
 		wb.regvalue("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\TypeEasy", "InstallPath")
 	local exe = path .. "\\TypeEasy.exe"
 
-	wb.desktop("金山打字通", "typeeasy", "Education;Game;KidsGame;", exe)
+	wb.desktop("金山打字通", "Education;Game;KidsGame;", exe)
 end
 
 -- is this pkg installed?

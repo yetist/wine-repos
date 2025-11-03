@@ -13,7 +13,7 @@ function install()
 	wb.exec("mkdir", "-p", wb.var.program_files .. "/aardio")
 	wb.exec("7z", "x", "-o" .. wb.var.program_files .. "/aardio", "aardio.7z")
 
-	wb.desktop("aardio", "aardio", "Development;", wb.var.program_files .. "/aardio/aardio.exe")
+	wb.desktop("aardio", "Development;", wb.var.program_files .. "/aardio/aardio.exe")
 end
 
 function check()
