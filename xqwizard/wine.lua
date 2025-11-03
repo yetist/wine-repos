@@ -15,7 +15,7 @@ function install()
 		"InstallLocation"
 	)
 	local exe = path .. "\\XQWIZARD.EXE"
-	wb.desktop("象棋巫师", "Game;KidsGame;", exe)
+	wb.desktop("象棋巫师", "Game;KidsGame;", exe, 1)
 end
 
 function check()
