@@ -16,7 +16,7 @@ function install()
 		os.execute("for i in *x86.cab; do cabextract -L -F *d3dx9*.dll* -d " .. wb.var.system32_dlls .. " $i; done")
 	end
 
-	wb.override_dll(
+	wb.override_dlls(
 		"native",
 		"d3dx9_24",
 		"d3dx9_25",

@@ -33,7 +33,7 @@ function install()
 		-- wb.wine(wb.var.system32_dlls .. "/regsvr32.exe quartz.dll")
 	end
 
-	wb.override_dll("native,builtin", "oleaut32")
+	wb.override_dlls("native,builtin", "oleaut32")
 end
 
 -- is this pkg installed?

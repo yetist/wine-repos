@@ -29,7 +29,7 @@ function install()
 		wb.exec("cp", file, wb.var.system32_dlls)
 		wb.wine(wb.var.system32_dlls .. "/regsvr32.exe quartz.dll")
 	end
-	wb.override_dll("native,builtin", "quartz")
+	wb.override_dlls("native,builtin", "quartz")
 end
 
 -- is this pkg installed?

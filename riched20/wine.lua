@@ -10,7 +10,7 @@ source = { "http://x3270.bgp.nu/download/specials/W2KSP4_EN.EXE" }
 function install()
 	os.execute("cabextract -L -F i386/riched20.dl_ W2KSP4_EN.EXE")
 	os.execute("cabextract --directory=" .. wb.var.system32_dlls .. " i386/riched20.dl_")
-	wb.override_dll("native,builtin", "msls31")
+	wb.override_dlls("native,builtin", "msls31")
 end
 
 -- is this pkg installed?

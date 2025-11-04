@@ -18,7 +18,7 @@ function install()
 	else
 		wb.wine("vcredist_x86.EXE")
 	end
-	wb.override_dll("native,builtin", "atl80", "msvcm80", "msvcp80", "msvcr80", "vcomp")
+	wb.override_dlls("native,builtin", "atl80", "msvcm80", "msvcp80", "msvcr80", "vcomp")
 end
 
 -- is this pkg installed?

@@ -24,7 +24,7 @@ function install()
 		wb.exec("cabextract", "-L", "-F", file, "windows6.1-KB976932-X86.exe")
 		wb.exec("cp", file, wb.var.system32_dlls)
 	end
-	wb.override_dll("native,builtin", "msftedit")
+	wb.override_dlls("native,builtin", "msftedit")
 end
 
 function check()
