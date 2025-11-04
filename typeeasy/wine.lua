@@ -3,7 +3,8 @@ pkgver = "2016"
 pkgrel = 1
 pkgdesc = "TypeEasy(金山打字通)"
 publisher = "Kingsoft"
-
+icon =
+	"https://personal-act.wpscdn.cn/rubik_components_test_operator/rubik-admin/resource/1655803755471_logoimg.png#102"
 url = "https://www.51dzt.com/rubik-ssr/51dzt"
 
 depends = { "fakechinese", "quartz", "riched20", "vb6run", "mfc42" }
