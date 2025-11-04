@@ -5,10 +5,9 @@ pkgdesc = "企业微信"
 publisher = ""
 url = ""
 icon = "https://wwcdn.weixin.qq.com/node/wwnl/wwnl/style/images/independent/favicon/favicon_48h$c976bd14.png#200"
-requires = { "cabextract" }
-depends = { "fakechinese" }
+requires = {}
+depends = { "fakechinese", "msftedit" }
 -- d3d11
--- msftedit
 source = { "https://dldir1.qq.com/wework/work_weixin/WeCom_5.0.0.8002.exe" }
 
 function install()
