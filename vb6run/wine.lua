@@ -11,7 +11,7 @@ source = {
 -- install pkg into wine prefix
 function install()
 	wb.exec("wine", "VB6.0-KB290887-X86.exe", "/T:c:\\windows\\temp", "/c", "/q")
-	wb.exec("mv", wb.var.prefix .. "/drive_c/windows/temp/vbrun60sp6.exe", ".")
+	wb.exec("mv", wb.var.windir .. "/temp/vbrun60sp6.exe", ".")
 
 	wb.exec("cabextract", "-L", "vbrun60sp6.exe")
 	wb.exec(
