@@ -1,4 +1,4 @@
-pkgname = "notepad-plus-plus"
+pkgname = "notepad++"
 pkgver = "8.8.7"
 pkgrel = 1
 pkgdesc = "A free source code editor and Notepad replacement that supports several programming languages."
