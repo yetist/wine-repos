@@ -3,9 +3,11 @@ pkgver = "2004"
 pkgrel = 1
 pkgdesc = "MS Visual Basic 6 runtime sp6"
 publisher = "Microsoft"
-
 source = {
 	"https://github.com/KieuManh366377/Microsoft-Visual-Basic-6.0-Service-Pack-6/raw/refs/heads/main/VB6.0-KB290887-X86.exe",
+}
+sha256sums = {
+	"467b5a10c369865f2021d379fc0933cb382146b702bbca4bcb703fc86f4322bb",
 }
 
 -- install pkg into wine prefix

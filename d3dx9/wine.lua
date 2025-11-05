@@ -5,6 +5,9 @@ pkgdesc = "MS d3dx9_??.dll from DirectX 9 redistributable"
 arch = { "win32", "win64" }
 requires = { "cabextract" }
 source = { "https://files.holarse-linuxgaming.de/mirrors/microsoft/directx_Jun2010_redist.exe" }
+sha256sums = {
+	"8746ee1a84a083a90e37899d71d50d5c7c015e69688a466aa80447f011780c0d",
+}
 
 function install()
 	-- Installing native directx9 to work around playback bug

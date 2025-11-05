@@ -3,9 +3,7 @@ pkgver = "2019"
 pkgrel = 1
 pkgdesc = "Creates aliases for Chinese fonts using Source Han Sans fonts"
 publisher = "Adobe"
-
 depends = { "source-han-sans-fonts" }
-source = { "replace.reg" }
 
 -- install pkg into wine prefix
 function install()

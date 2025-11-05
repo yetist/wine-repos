@@ -7,6 +7,9 @@ url = "https://www.xqbase.com/"
 icon = "https://www.xqbase.com/wizard.jpg"
 depends = { "fakechinese", "vb6run", "oleaut32" }
 source = { "https://www.xqbase.com/download/xqwizard_setup.exe" }
+sha256sums = {
+	"bf75f8c49d0177fc445c0b3da23b817fc3ac73313aa6ed4f0cb812ec19f210b6",
+}
 
 function install()
 	wb.wine(wb.basename(source[1]))

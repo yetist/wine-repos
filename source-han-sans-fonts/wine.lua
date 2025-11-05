@@ -3,10 +3,12 @@ pkgver = "2.0.4"
 pkgrel = 1
 pkgdesc = "Source Han Sans fonts"
 url = "https://github.com/adobe-fonts/source-han-sans"
-
 requires = { "unzip" }
 source = {
 	"https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSans.ttc.zip",
+}
+sha256sums = {
+	"6f59118a9adda5a7fe4e9e6bb538309f7e1d3c5411f9a9d32af32a79501b7e4f",
 }
 
 -- install pkg into wine prefix

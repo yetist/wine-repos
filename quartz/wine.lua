@@ -4,16 +4,14 @@ pkgrel = 1
 pkgdesc = "quartz.dll"
 publisher = "Microsoft"
 url = "https://www.51dzt.com/rubik-ssr/51dzt"
-
-if wb.var.arch == "win64" then
-	source = {
-		"windows6.1-KB976932-X64.exe::http://download.windowsupdate.com/msdownload/update/software/svpk/2011/02/windows6.1-kb976932-x64_74865ef2562006e51d7f9333b4a8d45b7a749dab.exe",
-	}
-else
-	source = {
-		"windows6.1-KB976932-X86.exe::http://download.windowsupdate.com/msdownload/update/software/svpk/2011/02/windows6.1-kb976932-x86_c3516bc5c9e69fee6d9ac4f981f5b95977a8a2fa.exe",
-	}
-end
+source = {
+	"windows6.1-KB976932-X64.exe::http://download.windowsupdate.com/msdownload/update/software/svpk/2011/02/windows6.1-kb976932-x64_74865ef2562006e51d7f9333b4a8d45b7a749dab.exe",
+	"windows6.1-KB976932-X86.exe::http://download.windowsupdate.com/msdownload/update/software/svpk/2011/02/windows6.1-kb976932-x86_c3516bc5c9e69fee6d9ac4f981f5b95977a8a2fa.exe",
+}
+sha256sums = {
+	"f4d1d418d91b1619688a482680ee032ffd2b65e420c6d2eaecf8aa3762aa64c8",
+	"e5449839955a22fc4dd596291aff1433b998f9797e1c784232226aba1f8abd97",
+}
 
 -- install pkg into wine prefix
 function install()

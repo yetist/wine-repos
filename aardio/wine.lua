@@ -8,6 +8,9 @@ icon = "https://www.aardio.com/images/favicon32.ico#128"
 requires = { "7z" }
 depends = { "fakechinese" }
 source = { "https://d.aardio.com/ide/aardio.7z" }
+sha256sums = {
+	"7820f2f62161064dc1068f54803da617ce7424484feb49477753ce66eafa07b3",
+}
 
 function install()
 	wb.exec("mkdir", "-p", wb.var.program_files_x86 .. "/aardio")

@@ -6,10 +6,12 @@ publisher = "Don Ho"
 url = "https://notepad-plus-plus.org"
 icon =
 	"https://raw.githubusercontent.com/notepad-plus-plus/notepad-plus-plus/refs/heads/master/PowerEditor/misc/chameleon/chameleon-pencil-200.png#100"
-requires = {}
 depends = { "fakechinese" }
 source =
 	{ "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.8.7/npp.8.8.7.Installer.x64.exe" }
+sha256sums = {
+	"49d2531893b09cb6a8e3429ca0a734e871a2d96fa2575c0eec3229d383fa233a",
+}
 
 function install()
 	wb.wine(wb.basename(source[1]))

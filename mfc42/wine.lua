@@ -3,9 +3,11 @@ pkgver = "2000"
 pkgrel = 1
 pkgdesc = "Visual C++ 6 SP4 mfc42 library; part of vcrun6"
 publisher = "Microsoft"
-
 requires = { "cabextract" }
 source = { "https://download.microsoft.com/download/vc60pro/Update/2/W9XNT4/EN-US/VC6RedistSetup_deu.exe" }
+sha256sums = {
+	"c2eb91d9c4448d50e46a32fecbcc3b418706d002beab9b5f4981de552098cee7",
+}
 
 -- install pkg into wine prefix
 function install()
