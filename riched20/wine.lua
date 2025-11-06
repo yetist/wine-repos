@@ -17,9 +17,5 @@ end
 
 -- is this pkg installed?
 function check()
-	local _, value = wb.regvalue("HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides", "msls31")
-	if value == "native,builtin" then
-		return true
-	end
-	return false
+	return wb.check_override("native,builtin", "msls31")
 end

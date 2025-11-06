@@ -29,9 +29,5 @@ end
 
 -- is this pkg installed?
 function check()
-	local _, value = wb.regvalue("HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides", "streamci")
-	if value == "native" then
-		return true
-	end
-	return false
+	return wb.check_override("native", "streamci")
 end

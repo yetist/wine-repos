@@ -13,8 +13,8 @@ sha256sums = {
 }
 
 function install()
-	wb.exec("mkdir", "-p", wb.var.program_files_x86 .. "/aardio")
-	wb.exec("7z", "x", "-o" .. wb.var.program_files_x86 .. "/aardio", "aardio.7z")
+	wb.execl("mkdir", "-p", wb.var.program_files_x86 .. "/aardio")
+	wb.execl("7z", "x", "-o" .. wb.var.program_files_x86 .. "/aardio", "aardio.7z")
 
 	wb.desktop("aardio", "Development;", wb.var.program_files_x86 .. "/aardio/aardio.exe")
 end

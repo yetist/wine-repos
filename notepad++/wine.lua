@@ -28,5 +28,5 @@ end
 function run()
 	local _, path =
 		wb.regvalue("HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Notepad++", "DisplayIcon")
-	wb.exec("wine", path)
+	wb.execl("wine", path)
 end

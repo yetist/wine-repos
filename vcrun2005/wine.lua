@@ -25,9 +25,5 @@ end
 
 -- is this pkg installed?
 function check()
-	local _, value = wb.regvalue("HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides", "atl80")
-	if value == "native,builtin" then
-		return true
-	end
-	return false
+	return wb.check_override("native,builtin", "atl80")
 end

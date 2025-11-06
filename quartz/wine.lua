@@ -18,13 +18,13 @@ function install()
 	if wb.var.arch == "win64" then
 		file =
 			"amd64_microsoft-windows-directshow-core_31bf3856ad364e35_6.1.7601.17514_none_04963d500485b5cd/quartz.dll"
-		wb.exec("cabextract", "-L", "-F", file, "windows6.1-KB976932-X64.exe")
-		wb.exec("cp", file, wb.var.system64_dlls)
+		wb.execl("cabextract", "-L", "-F", file, "windows6.1-KB976932-X64.exe")
+		wb.execl("cp", file, wb.var.system64_dlls)
 		wb.wine(wb.var.system64_dlls .. "/regsvr32.exe quartz.dll")
 	else
 		file = "x86_microsoft-windows-directshow-core_31bf3856ad364e35_6.1.7601.17514_none_a877a1cc4c284497/quartz.dll"
-		wb.exec("cabextract", "-L", "-F", file, "windows6.1-KB976932-X86.exe")
-		wb.exec("cp", file, wb.var.system32_dlls)
+		wb.execl("cabextract", "-L", "-F", file, "windows6.1-KB976932-X86.exe")
+		wb.execl("cp", file, wb.var.system32_dlls)
 		wb.wine(wb.var.system32_dlls .. "/regsvr32.exe quartz.dll")
 	end
 	wb.override_dlls("native,builtin", "quartz")
@@ -32,9 +32,5 @@ end
 
 -- is this pkg installed?
 function check()
-	local _, value = wb.regvalue("HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides", "quartz")
-	if value == "native,builtin" then
-		return true
-	end
-	return false
+	return wb.check_override("native,builtin", "quartz")
 end

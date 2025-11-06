@@ -50,5 +50,5 @@ function run()
 	local _, path =
 		wb.regvalue("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\TypeEasy", "InstallPath")
 	local exe = path .. "\\TypeEasy.exe"
-	wb.exec("wine", exe)
+	wb.execl("wine", exe)
 end

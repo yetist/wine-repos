@@ -35,5 +35,5 @@ function run()
 		"HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\企业微信",
 		"DisplayIcon"
 	)
-	wb.exec("wine", path)
+	wb.execl("wine", path)
 end

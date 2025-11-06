@@ -17,21 +17,17 @@ function install()
 	if wb.var.arch == "win64" then
 		file =
 			"amd64_microsoft-windows-ie-runtimeutilities_31bf3856ad364e35_8.0.7601.17514_none_c083f7001a25b301/iertutil.dll"
-		wb.exec("cabextract", "-L", "-F", file, "windows6.1-KB976932-X64.exe")
-		wb.exec("cp", file, wb.var.system64_dlls)
+		wb.execl("cabextract", "-L", "-F", file, "windows6.1-KB976932-X64.exe")
+		wb.execl("cp", file, wb.var.system64_dlls)
 	else
 		file =
 			"x86_microsoft-windows-ie-runtimeutilities_31bf3856ad364e35_8.0.7601.17514_none_64655b7c61c841cb/iertutil.dll"
-		wb.exec("cabextract", "-L", "-F", file, "windows6.1-KB976932-X86.exe")
-		wb.exec("cp", file, wb.var.system32_dlls)
+		wb.execl("cabextract", "-L", "-F", file, "windows6.1-KB976932-X86.exe")
+		wb.execl("cp", file, wb.var.system32_dlls)
 	end
 	wb.override_dlls("native,builtin", "iertutil")
 end
 
 function check()
-	local _, value = wb.regvalue("HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides", "iertutil")
-	if value == "native,builtin" then
-		return true
-	end
-	return false
+	return wb.check_override("native,builtin", "iertutil")
 end

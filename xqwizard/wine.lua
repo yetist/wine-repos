@@ -34,5 +34,5 @@ function run()
 		"HKLM\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\象棋巫师_is1",
 		"InstallLocation"
 	)
-	wb.exec("wine", path .. "XQWIZARD.EXE")
+	wb.execl("wine", path .. "XQWIZARD.EXE")
 end

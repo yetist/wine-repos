@@ -16,20 +16,16 @@ sha256sums = {
 function install()
 	if wb.var.arch == "win64" then
 		file = "amd64_microsoft-windows-msftedit_31bf3856ad364e35_6.1.7601.17514_none_33f6fe754dd11735/msftedit.dll"
-		wb.exec("cabextract", "-L", "-F", file, "windows6.1-KB976932-X64.exe")
-		wb.exec("cp", file, wb.var.system64_dlls)
+		wb.execl("cabextract", "-L", "-F", file, "windows6.1-KB976932-X64.exe")
+		wb.execl("cp", file, wb.var.system64_dlls)
 	else
 		file = "x86_microsoft-windows-msftedit_31bf3856ad364e35_6.1.7601.17514_none_d7d862f19573a5ff/msftedit.dll"
-		wb.exec("cabextract", "-L", "-F", file, "windows6.1-KB976932-X86.exe")
-		wb.exec("cp", file, wb.var.system32_dlls)
+		wb.execl("cabextract", "-L", "-F", file, "windows6.1-KB976932-X86.exe")
+		wb.execl("cp", file, wb.var.system32_dlls)
 	end
 	wb.override_dlls("native,builtin", "msftedit")
 end
 
 function check()
-	local _, value = wb.regvalue("HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides", "msftedit")
-	if value == "native,builtin" then
-		return true
-	end
-	return false
+	return wb.check_override("native,builtin", "msftedit")
 end

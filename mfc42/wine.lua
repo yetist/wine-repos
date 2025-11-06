@@ -11,9 +11,9 @@ sha256sums = {
 
 -- install pkg into wine prefix
 function install()
-	wb.exec("wine", "VC6RedistSetup_deu.exe", "/T:c:\\windows\\temp", "/c", "/q")
-	wb.exec("mv", wb.var.prefix .. "/drive_c/windows/temp/vcredist.exe", ".")
-	wb.exec("cabextract", "-d", wb.var.system32_dlls, "-L", "-F", "mfc42*.dll", "vcredist.exe")
+	wb.execl("wine", "VC6RedistSetup_deu.exe", "/T:c:\\windows\\temp", "/c", "/q")
+	wb.execl("mv", wb.var.prefix .. "/drive_c/windows/temp/vcredist.exe", ".")
+	wb.execl("cabextract", "-d", wb.var.system32_dlls, "-L", "-F", "mfc42*.dll", "vcredist.exe")
 end
 
 -- is this pkg installed?

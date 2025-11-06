@@ -18,21 +18,17 @@ function install()
 	if wb.var.arch == "win64" then
 		file =
 			"amd64_microsoft-windows-i..tocolimplementation_31bf3856ad364e35_8.0.7601.17514_none_7ac940242f7494a4/wininet.dll"
-		wb.exec("cabextract", "-L", "-F", file, "windows6.1-KB976932-X64.exe")
-		wb.exec("cp", file, wb.var.system64_dlls)
+		wb.execl("cabextract", "-L", "-F", file, "windows6.1-KB976932-X64.exe")
+		wb.execl("cp", file, wb.var.system64_dlls)
 	else
 		file =
 			"x86_microsoft-windows-i..tocolimplementation_31bf3856ad364e35_8.0.7601.17514_none_1eaaa4a07717236e/wininet.dll"
-		wb.exec("cabextract", "-L", "-F", file, "windows6.1-KB976932-X86.exe")
-		wb.exec("cp", file, wb.var.system32_dlls)
+		wb.execl("cabextract", "-L", "-F", file, "windows6.1-KB976932-X86.exe")
+		wb.execl("cp", file, wb.var.system32_dlls)
 	end
 	wb.override_dlls("native,builtin", "wininet")
 end
 
 function check()
-	local _, value = wb.regvalue("HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides", "wininet")
-	if value == "native,builtin" then
-		return true
-	end
-	return false
+	return wb.check_override("native,builtin", "wininet")
 end
