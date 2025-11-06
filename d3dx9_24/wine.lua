@@ -10,9 +10,7 @@ sha256sums = {
 }
 
 function install()
-	-- Installing native directx9 to work around playback bug
-	file = "directx_Jun2010_redist.exe"
-	os.execute("cabextract -L -F *d3dx9_24*.cab " .. file)
+	os.execute("cabextract -L -F *d3dx9_24*.cab directx_Jun2010_redist.exe")
 	if wb.var.arch == "win64" then
 		os.execute("for i in *x64.cab; do cabextract -L -F *d3dx9_24*.dll* -d " .. wb.var.system64_dlls .. " $i; done")
 	else

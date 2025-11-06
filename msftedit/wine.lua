@@ -15,11 +15,12 @@ sha256sums = {
 
 function install()
 	if wb.var.arch == "win64" then
-		file = "amd64_microsoft-windows-msftedit_31bf3856ad364e35_6.1.7601.17514_none_33f6fe754dd11735/msftedit.dll"
+		local file =
+			"amd64_microsoft-windows-msftedit_31bf3856ad364e35_6.1.7601.17514_none_33f6fe754dd11735/msftedit.dll"
 		wb.execl("cabextract", "-L", "-F", file, "windows6.1-KB976932-X64.exe")
 		wb.execl("cp", file, wb.var.system64_dlls)
 	else
-		file = "x86_microsoft-windows-msftedit_31bf3856ad364e35_6.1.7601.17514_none_d7d862f19573a5ff/msftedit.dll"
+		local file = "x86_microsoft-windows-msftedit_31bf3856ad364e35_6.1.7601.17514_none_d7d862f19573a5ff/msftedit.dll"
 		wb.execl("cabextract", "-L", "-F", file, "windows6.1-KB976932-X86.exe")
 		wb.execl("cp", file, wb.var.system32_dlls)
 	end

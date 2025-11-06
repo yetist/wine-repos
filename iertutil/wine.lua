@@ -15,12 +15,12 @@ sha256sums = {
 
 function install()
 	if wb.var.arch == "win64" then
-		file =
+		local file =
 			"amd64_microsoft-windows-ie-runtimeutilities_31bf3856ad364e35_8.0.7601.17514_none_c083f7001a25b301/iertutil.dll"
 		wb.execl("cabextract", "-L", "-F", file, "windows6.1-KB976932-X64.exe")
 		wb.execl("cp", file, wb.var.system64_dlls)
 	else
-		file =
+		local file =
 			"x86_microsoft-windows-ie-runtimeutilities_31bf3856ad364e35_8.0.7601.17514_none_64655b7c61c841cb/iertutil.dll"
 		wb.execl("cabextract", "-L", "-F", file, "windows6.1-KB976932-X86.exe")
 		wb.execl("cp", file, wb.var.system32_dlls)

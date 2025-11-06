@@ -5,7 +5,6 @@ pkgdesc = "Creates aliases for Chinese fonts using Source Han Sans fonts"
 publisher = "Adobe"
 depends = { "source-han-sans-fonts" }
 
--- install pkg into wine prefix
 function install()
 	wb.regset("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\FontLink\\SystemLink", {
 		["Arial Black"] = "sourcehansans.ttc",
@@ -19,7 +18,6 @@ function install()
 	})
 end
 
--- is this pkg installed?
 function check()
 	local _, val = wb.regvalue(
 		"HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\FontLink\\SystemLink",

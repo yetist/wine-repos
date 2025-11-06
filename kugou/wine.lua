@@ -7,7 +7,9 @@ url = "http://www.kugou.com/"
 icon = "https://imge.kugou.com/commendpic/20250513/20250513195547550860.png#128"
 depends = { "fakechinese", "quartz", "riched20" }
 source = { "https://downmini.yun.kugou.com/web/kugou_10250.exe" }
--- checksums = {}
+sha256sums = {
+	"4df0aceb15bbd181abab392fe3718178cd68b1b5b97f453717b16fa1628e7c29",
+}
 
 function install()
 	wb.wine(wb.basename(source[1]))
